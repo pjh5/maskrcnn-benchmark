@@ -1,7 +1,10 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
-# from ._utils import _C
-from maskrcnn_benchmark import _C
+import torch
 
-nms = _C.nms
+# we need this for the custom ops to exist
+import maskrcnn_benchmark._custom_ops   # noqa: F401
+
+nms = torch.ops.maskrcnn_benchmark.nms
+
 # nms.__doc__ = """
 # This function performs Non-maximum suppresion"""
